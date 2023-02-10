@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.book-card {
+  @apply bg-white max-w-xs flex flex-col mb-6 justify-center items-start px-6 py-2 space-y-6 rounded-lg shadow-lg;
+}
+
+#read-btn {
+  @apply bg-green-300 py-2 px-8 mx-auto hover:bg-green-900 hover:text-white rounded-md;
+}
+
+#unread-btn {
+  @apply bg-red-300 py-2 px-8 mx-auto hover:bg-red-900 hover:text-white rounded-md;
+}
+
+#remove {
+  @apply bg-gray-200 py-2 px-8 mx-auto hover:bg-black hover:text-white rounded-md;
+}
