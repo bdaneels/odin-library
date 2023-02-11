@@ -6,11 +6,11 @@
   @apply bg-white max-w-xs flex flex-col mb-6 justify-center items-start px-6 py-2 space-y-6 rounded-lg shadow-lg;
 }
 
-#read-btn {
+.read {
   @apply bg-green-300 py-2 px-8 mx-auto hover:bg-green-900 hover:text-white rounded-md;
 }
 
-#unread-btn {
+.unread {
   @apply bg-red-300 py-2 px-8 mx-auto hover:bg-red-900 hover:text-white rounded-md;
 }
 
