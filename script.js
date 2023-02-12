@@ -16,8 +16,6 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-/*  */
-/*  */
 /* functions */
 function showBooksInLibrary() {
   libraryDiv.innerHTML = "";
@@ -40,6 +38,11 @@ function showBooksInLibrary() {
     pagesDiv.textContent = book.pages;
     removeDiv.setAttribute("id", "remove");
     removeDiv.textContent = "Delete book";
+    removeDiv.addEventListener("click", () => {
+      console.log("ive been removed");
+      index = removeDiv.parentElement.getAttribute("data");
+      deleteBook(index);
+    });
 
     if (book.read) {
       readDiv.textContent = "Read";
@@ -50,6 +53,13 @@ function showBooksInLibrary() {
     }
 
     readDiv.setAttribute("id", "readbtn");
+    readDiv.addEventListener(
+      "click",
+      function () {
+        readBtnEvent(readDiv);
+      },
+      false
+    );
 
     bookDiv.appendChild(titleHeader);
     bookDiv.appendChild(authorSpan);
@@ -58,8 +68,6 @@ function showBooksInLibrary() {
     bookDiv.appendChild(removeDiv);
 
     libraryDiv.appendChild(bookDiv);
-    selectReadButtons();
-    setEventListeners();
   }
 }
 
@@ -88,21 +96,6 @@ function submitClick(event) {
   showBooksInLibrary();
 }
 
-/* update buttons */
-
-function selectReadButtons() {
-  readBtns = document.querySelectorAll("#readbtn");
-  removeBtns = document.querySelectorAll("#remove");
-}
-
-/* set event listeners */
-
-function setEventListeners() {
-  selectReadButtons();
-  setEventListenersRead();
-  setEventListenersRemove();
-}
-
 function readBtnEvent(button) {
   console.log("i've been clicked");
   index = button.parentElement.getAttribute("data");
@@ -116,28 +109,6 @@ function readBtnEvent(button) {
     button.classList.add("read");
     button.textContent = "Read";
   }
-}
-
-function setEventListenersRead() {
-  console.log(readBtns);
-  readBtns.forEach((button) => {
-    button.addEventListener(
-      "click",
-      function () {
-        readBtnEvent(button);
-      },
-      false
-    );
-  });
-}
-
-function setEventListenersRemove() {
-  removeBtns.forEach((button) => {
-    button.addEventListener("click", () => {
-      index = button.parentElement.getAttribute("data");
-      deleteBook(index);
-    });
-  });
 }
 
 /* change read status */
@@ -164,4 +135,3 @@ function deleteBook(index) {
 
 /* run the program */
 showBooksInLibrary();
-setEventListeners();
