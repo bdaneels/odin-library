@@ -129,6 +129,7 @@ function setEventListenersUnread() {
       button.textContent = "Read"
       index = button.parentElement.getAttribute('data')
       changeReadStatus(index)
+     
       setEventListenersRead()
 
     })
