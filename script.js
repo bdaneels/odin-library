@@ -83,10 +83,10 @@ function checkboxStatus() {
 }
 
 /* target the submit button and override default */
-submitBtn.addEventListener("click", submitClick, false);
+/* submitBtn.addEventListener("click", submitClick, false); */
 
 function submitClick(event) {
-  event.preventDefault();
+  event.preventDefault()
   let title = titleField.value;
   let author = authorField.value;
   let pages = pagesField.value;
@@ -135,3 +135,32 @@ function deleteBook(index) {
 
 /* run the program */
 showBooksInLibrary();
+
+/* validation */
+
+let form = document.querySelector("form")
+let titleError= document.getElementById('title-error')
+let author = document.getElementById('author')
+let pages = document.getElementById('pages')
+
+let title = document.getElementById("title")
+
+form.addEventListener('submit', (event)=>{
+  if(!title.validity.valid || !author.validity.valid ||!pages.validity.valid){
+    event.preventDefault()
+    showError()
+  } else{ submitClick(event)
+
+  }
+})
+
+function showError (){
+  if(!title.validity.valid){
+    titleError.textContent='Please add a title'
+  } else if (!author.validity.valid){
+    titleError.textContent = 'please add an author'
+  }
+  else if(!pages.validity.valid){
+    titleError.textContent='please add a page number'
+  }
+}
